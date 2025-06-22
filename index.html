@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+    <nav id="nav" class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Portfolio</a>
+            <button id="weather-btn" title="Toggle Weather">
+                <i class="fas fa-cloud"></i>
+            </button>
+            <button id="nav-toggle" class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div id="nav-links" class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <button id="theme-toggle" class="chatbot-icon" title="Toggle Theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <button id="back-to-top" class="chatbot-icon" title="Back to Top" style="display: none; bottom: 100px;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <div id="chatbot" class="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Verril's Assistant</h3>
+            <button id="chatbot-close" class="chatbot-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="chatbot-message bot">
+                <p>Hello! I'm Verril's AI assistant. Ask me about his skills, projects, or anything else!</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Type your message...">
+            <button id="chatbot-send"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+    <button id="chatbot-toggle" class="chatbot-icon">
+        <i class="fas fa-robot"></i>
+    </button>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-greeting">Hello, I'm</div>
+            <h1>Verril Vaz</h1>
+            <div class="hero-subtitle">I'm a <span id="typing-text"></span></div>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <button id="download-resume" class="btn btn-secondary">Download Resume</button>
+            </div>
+        </div>
+        <div class="hero-profile">
+            <img src="4.jpg" alt="Profile">
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">I'm a passionate full-stack developer with over 5 years of experience creating digital solutions that make a difference. I specialize in modern web technologies and AI-driven applications, turning complex problems into simple, beautiful designs.</p>
+                <p class="about-text">When I'm not coding, you can find me exploring AI innovations, contributing to open-source projects, or sharing my knowledge through tech talks and mentoring.</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="20+">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="2+">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="10+">0</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="800+">0</span>
+                        <span class="stat-label">Support Hours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-title">Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">React.js</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="90%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Vue.js</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="80%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Javascript</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="85%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">CSS/SASS</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="95%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-server skill-icon"></i>
+                    <h3 class="skill-title">Backend Development</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="90%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="85%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">MongoDB</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="80%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">PostgreSQL</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="75%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3 class="skill-title">AI & Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="80%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">PyTorch</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="75%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">NLP</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="85%"></div></div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Chatbot Development</span>
+                            <div class="skill-level"><div class="skill-progress" data-progress="90%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="filter-bar">
+                <button class="filter-btn" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="react">React</button>
+                <button class="filter-btn" data-filter="nodejs">Node.js</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="webapp">Web App</button>
+                <button class="filter-btn" data-filter="mobileapp">Mobile App</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-tags="react,nodejs,webapp">
+                    <div class="project-image"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Java Full Stack</h3>
+                        <p class="project-description">A full-stack development using java for designing Bank Management System</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Springboot</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            
+                            <a href="https://github.com/Verril-hash/Java_fullstack.git" class="project-link">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-tags="vuejs,python,webapp">
+                    <div class="project-image"><i class="fas fa-chart-line"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">AOTP Platform</h3>
+                        <p class="project-description">An Alphabetical otp service platform that provides to non-banking sectors.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Reactjs</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alphaotp.netlify.app/" class="project-link">Live Demo</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-tags="reactnative,mobileapp">
+                    <div class="project-image"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Encryption Web-App</h3>
+                        <p class="project-description">Platform that converts your images into a secured password protected pdf and adds on additional feature of steganography.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Steganography Functions</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://verril-encryption-app.hf.space" class="project-link">Live Demo</a>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-tags="python,webapp">
+                    <div class="project-image"><i class="fas fa-robot"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">SIGN AI</h3>
+                        <p class="project-description">An AI-powered Signature Verification Web-App using NLP and Python for real-time user interaction and detect forged signatures.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://verril-signai.hf.space" class="project-link">Live Demo</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="hobby" class="hobby">
+        <div class="container">
+            <h2 class="section-title">My Singing Passion</h2>
+            <div class="hobby-content">
+                <p class="hobby-text">Singing is my creative outlet outside of coding. Whether performing at local events or recording covers, music allows me to express myself and connect with others. Below is a showcase of some memorable moments from my singing journey.</p>
+            </div>
+            <div class="carousel-container">
+                <div id="carousel" class="carousel">
+                    <div class="carousel-item"><img src="6.JPG" alt="Singing Performance"></div>
+                    <div class="carousel-item"><img src="photo.jpg" alt="Singing Performance"></div>
+                    <div class="carousel-item"><img src="5.JPG" alt="Singing Performance"></div>
+                    <div class="carousel-item"><img src="photo1.jpg" alt="Singing Performance"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>verrilvaz404@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+91 8971889830</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Bengaluru,India</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <div id="notification" class="notification-container">
+        <div class="notification-content">
+            <p id="notification-text"></p>
+        </div>
+        <button id="notification-close" class="notification-close"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="weather-widget"></div>
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://github.com/Verril-hash" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="http://linkedin.com/in/verrilvaz" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/verril_vaz?igsh=M24wMzQ2Z3NuMXln&utm_source=qr" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="footer-text">© 2025 Verril Vaz. All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
