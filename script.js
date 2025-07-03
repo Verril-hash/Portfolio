@@ -1,3 +1,5 @@
+const isDesktop = window.innerWidth >= 1024;
+
 // Set dark mode styles
 const root = document.documentElement;
 root.style.setProperty('--bg', '#0a0a1a');
@@ -101,7 +103,6 @@ if (document.getElementById('particles-js')) {
 }
 
 // Initialize cursor elements
-const isDesktop = window.innerWidth >= 1024;
 const cursor = document.getElementById('cursor');
 const cursorFollower = document.getElementById('cursor-follower');
 
@@ -199,6 +200,7 @@ async function updateWeatherWidget() {
                 const weatherCode = data.current_weather.weathercode;
                 const temp = data.current_weather.temperature;
                 const unit = data.current_weather_units.temperature;
+                // Always use weather.png for the icon
                 weatherWidget.innerHTML = `
                     <div class="weather-info">
                         <img src="weather.png" alt="Weather Icon" class="weather-icon">
@@ -235,6 +237,7 @@ if (weatherButton) {
 }
 
 window.addEventListener('load', () => {
+    // ...existing loading screen code...
     updateWeatherWidget(); // Initial load to fetch data
 });
 
@@ -415,27 +418,7 @@ if (carousel) {
     });
 }
 
-// Notification System
-function showNotification(message) {
-    const notification = document.getElementById('notification');
-    const notificationText = document.getElementById('notification-text');
-    if (notification && notificationText) {
-        notificationText.textContent = message;
-        notification.classList.add('active');
-        setTimeout(() => {
-            notification.classList.remove('active');
-        }, 3000);
-
-        const closeButton = document.getElementById('notification-close');
-        if (closeButton) {
-            closeButton.addEventListener('click', () => {
-                notification.classList.remove('active');
-            });
-        }
-    }
-}
-
-// Voice-Enabled Chatbot Logic
+// AI Chatbot Logic
 const chatbotToggle = document.getElementById('chatbot-toggle');
 const chatbotContainer = document.getElementById('chatbot');
 const chatbotClose = document.getElementById('chatbot-close');
@@ -452,101 +435,6 @@ if (chatbotToggle && chatbotContainer && chatbotClose && chatbotInput && chatbot
         chatbotContainer.classList.remove('active');
     });
 
-    // Voice Recognition
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-    recognition.continuous = true; // Enable continuous listening
-
-    let isListening = false;
-
-    // Microphone Button
-    const micButton = document.createElement('button');
-    micButton.innerHTML = '<i class="fas fa-microphone"></i>';
-    micButton.style.cssText = `
-        padding: 0.5rem;
-        background: linear-gradient(45deg, #00ff88, #00ccff);
-        border: none;
-        border-radius: 50%;
-        color: #000;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        margin: 0 5px;
-        flex: 0 0 40px;
-        box-sizing: border-box;
-    `;
-    micButton.addEventListener('click', () => {
-        if (!isListening) {
-            recognition.start();
-            micButton.style.background = 'linear-gradient(45deg, #ff4444, #cc0000)';
-            isListening = true;
-            showNotification('Listening... Speak continuously!');
-        } else {
-            recognition.stop();
-            micButton.style.background = 'linear-gradient(45deg, #00ff88, #00ccff)';
-            isListening = false;
-            showNotification('Stopped listening.');
-        }
-    });
-
-    // Style send button to match
-    chatbotSend.style.cssText = `
-        padding: 0.5rem;
-        background: linear-gradient(45deg, #00ff88, #00ccff);
-        border: none;
-        border-radius: 50%;
-        color: #000;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        margin: 0 5px;
-        flex: 0 0 40px;
-        box-sizing: border-box;
-    `;
-
-    // Ensure input container uses flex for mobile
-    const inputContainer = chatbotInput.parentElement;
-    inputContainer.style.cssText = `
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 5px;
-        box-sizing: border-box;
-    `;
-
-    inputContainer.insertBefore(micButton, chatbotSend);
-
-    recognition.onresult = (event) => {
-        const speechResult = event.results[event.results.length - 1][0].transcript.toLowerCase().trim();
-        if (event.results.length === 1 || event.results[event.results.length - 1].isFinal) {
-            chatbotInput.value = speechResult;
-            handleChatbotMessage(speechResult);
-        }
-    };
-
-    recognition.onerror = (event) => {
-        showNotification(`Error with speech recognition: ${event.error}. Please try again.`);
-        if (isListening) {
-            recognition.start(); // Restart on error to maintain continuous listening
-        }
-    };
-
-    recognition.onend = () => {
-        if (isListening) {
-            recognition.start(); // Restart recognition if still listening
-        }
-    };
-
-    // Pre-defined Responses
     const responses = {
         'skills': 'I specialize in full-stack development with React, Node.js, Python, and MongoDB. I also have expertise in AI technologies like TensorFlow and NLP. Want to know more about a specific skill?',
         'projects': 'I’ve built projects like an e-commerce platform, an analytics dashboard, a mobile app, and an AI chatbot. Check out the Projects section for details or ask me about a specific one!',
@@ -556,20 +444,6 @@ if (chatbotToggle && chatbotContainer && chatbotClose && chatbotInput && chatbot
         'weather': 'Checking the weather for you... Please allow location access if prompted!',
         'default': 'Hmm, I’m not sure about that one. Try asking about my skills, projects, resume, or how to check the weather!'
     };
-
-    function handleChatbotMessage(message) {
-        addMessage(message, false);
-        if (message.includes('weather')) {
-            getWeather();
-        } else {
-            const response = Object.keys(responses).find(key => message.includes(key)) 
-                ? responses[Object.keys(responses).find(key => message.includes(key))]
-                : responses.default;
-            simulateTyping(response);
-            speakResponse(response);
-        }
-        chatbotInput.value = '';
-    }
 
     function addMessage(content, isBot = false) {
         const messageDiv = document.createElement('div');
@@ -598,19 +472,19 @@ if (chatbotToggle && chatbotContainer && chatbotClose && chatbotInput && chatbot
         setTimeout(type, 500);
     }
 
-    function speakResponse(text) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
-        utterance.volume = 1;
-        utterance.rate = 1;
-        utterance.pitch = 1;
-        window.speechSynthesis.speak(utterance);
-    }
-
     chatbotSend.addEventListener('click', () => {
         const message = chatbotInput.value.trim().toLowerCase();
         if (message) {
-            handleChatbotMessage(message);
+            addMessage(message, false);
+            if (message.includes('weather')) {
+                getWeather();
+            } else {
+                const response = Object.keys(responses).find(key => message.includes(key)) 
+                    ? responses[Object.keys(responses).find(key => message.includes(key))]
+                    : responses.default;
+                simulateTyping(response);
+            }
+            chatbotInput.value = '';
         }
     });
 
@@ -629,25 +503,17 @@ if (chatbotToggle && chatbotContainer && chatbotClose && chatbotInput && chatbot
                 try {
                     const response = await fetch(url);
                     const data = await response.json();
-                    const weatherDesc = data.current_weather.weathercode;
+                    const weatherDesc = data.current_weather.weathercode; // Use weathercode (0-99, map to description)
                     const temp = data.current_weather.temperature;
-                    const responseText = `The weather at your location is ${getWeatherDescription(weatherDesc)} with a temperature of ${temp}°C.`;
-                    simulateTyping(responseText);
-                    speakResponse(responseText);
+                    simulateTyping(`The weather at your location is ${getWeatherDescription(weatherDesc)} with a temperature of ${temp}°C.`);
                 } catch (error) {
-                    const errorText = 'Sorry, I couldn’t fetch the weather. Please check your internet or try again later.';
-                    simulateTyping(errorText);
-                    speakResponse(errorText);
+                    simulateTyping('Sorry, I couldn’t fetch the weather. Please check your internet or try again later.');
                 }
             }, () => {
-                const errorText = 'Please enable location access to get the weather!';
-                simulateTyping(errorText);
-                speakResponse(errorText);
+                simulateTyping('Please enable location access to get the weather!');
             });
         } else {
-            const errorText = 'Geolocation is not supported by your browser.';
-            simulateTyping(errorText);
-            speakResponse(errorText);
+            simulateTyping('Geolocation is not supported by your browser.');
         }
     }
 }
@@ -737,6 +603,3 @@ if (contactForm && notification && notificationClose) {
         });
     });
 }
-
-// This file already uses standard JavaScript syntax for script.js.
-// No changes are needed.
