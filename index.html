@@ -3,18 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Verril Vaz - Software Engineer & Founder of Team Sahayak Foundation">
-    <title>Verril Vaz — Engineer & Founder</title>
+    <meta name="description" content="Portfolio of Verril Vaz, Software Engineer and Founder based in Bengaluru. Expertise in Node.js, Python, Rust, and AI Systems.">
+    <meta name="keywords" content="Verril Vaz, Software Engineer, Founder, Team Sahayak Foundation, Bengaluru, React, Node.js, Python, Rust, Developer">
+    <meta name="author" content="Verril Vaz">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    
+    <!-- Canonical URL to prevent duplicate content issues -->
+    <link rel="canonical" href="https://verrilvaz.dev/">
+    
+    <!-- Open Graph (Facebook, LinkedIn, iMessage previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://verrilvaz.dev/">
+    <meta property="og:title" content="Verril Vaz | Software Engineer">
+    <meta property="og:description" content="Portfolio of Verril Vaz, Software Engineer and Founder based in Bengaluru.">
+    <meta property="og:image" content="https://verrilvaz.dev/myface.PNG">
+
+    <!-- Twitter Card for Twitter previews -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://verrilvaz.dev/">
+    <meta name="twitter:title" content="Verril Vaz | Software Engineer">
+    <meta name="twitter:description" content="Portfolio of Verril Vaz, Software Engineer and Founder based in Bengaluru.">
+    <meta name="twitter:image" content="https://verrilvaz.dev/myface.PNG">
+
+    <title>Verril Vaz | Software Engineer</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Google JSON-LD Structured Data: Helps Google understand EXACTLY who you are -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Verril Vaz",
+      "url": "https://verrilvaz.dev",
+      "image": "https://verrilvaz.dev/myface.PNG",
+      "jobTitle": "Software Engineer & Founder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Team Sahayak Foundation"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/verrilvaz",
+        "https://github.com/Verril-hash",
+        "https://www.instagram.com/verril_vaz"
+      ]
+    }
+    </script>
 </head>
-<body>
+<body class="no-scroll">
+    <!-- Enterprise Pre-Loader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-text">VERRIL VAZ <span style="color: var(--text-muted); margin-left: 0.25rem;">© 2026</span></div>
+    </div>
+
     <nav class="site-nav">
-        <div class="nav-brand">VERRIL VAZ <span>© 2025</span></div>
+        <div class="nav-brand">VERRIL VAZ <span>© 2026</span></div>
         <div class="nav-links">
             <a href="#leadership">Leadership</a>
             <a href="#engineering">Engineering</a>
@@ -26,7 +78,12 @@
 
     <main>
         <section class="hero-section">
-            <h1 class="hero-title">SOFTWARE <span class="accent-blue">ENGINEER</span> & <span class="accent-gold">FOUNDER</span></h1>
+            <div class="hero-layout">
+                <h1 class="hero-title">SOFTWARE <span class="accent-blue">ENGINEER</span> &<br><span class="accent-gold">FOUNDER</span></h1>
+                <div class="hero-art">
+                    <img src="myface.PNG" alt="Verril Vaz">
+                </div>
+            </div>
             <div class="hero-meta">
                 <div class="meta-col">
                     <span class="meta-label">Location</span>
@@ -169,10 +226,41 @@
             </div>
         </section>
 
+        <!-- Terminal Section -->
+        <section id="cli" class="content-section">
+            <div class="section-grid border-top">
+                <div class="section-label accent-text">04 — CLI</div>
+                <div class="section-content">
+                    <h2 class="section-heading">Access the <span class="accent-text" style="color: #fff">terminal</span>.</h2>
+                    
+                    <!-- Interactive Terminal -->
+                    <div class="terminal-container fade-up" style="margin-top: 2rem; margin-bottom: 2rem;">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="term-btn close"></span>
+                                <span class="term-btn min"></span>
+                                <span class="term-btn max"></span>
+                            </div>
+                            <div class="terminal-title">guest@verril-dev:~</div>
+                        </div>
+                        <div class="terminal-body" id="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">guest@verril-dev:~$</span> <span class="typing-text">Welcome to my portfolio! Type <span class="accent-gold">'help'</span> to see available commands.</span>
+                            </div>
+                            <div class="terminal-input-line">
+                                <span class="prompt">guest@verril-dev:~$</span> 
+                                <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="content-section">
             <div class="section-grid border-top">
-                <div class="section-label accent-green">04 — CONTACT</div>
+                <div class="section-label accent-green">05 — CONTACT</div>
                 <div class="section-content">
                     <h2 class="section-heading">Let's <span class="accent-green">build something</span>.</h2>
                     <div class="contact-links">
